@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+# Starbuild configure script
+# Under the GPL license.
+
+# Default config
+PREFIX="$HOME/.local/starbuild"
+
+function InstallRocks(){
+    while IFS='' read -r LINE || [ -n "${LINE}" ]; do
+        echo "luarocks install ${LINE}"
+        luarocks install ${LINE}
+    done < ./rocks.txt
+}
+if [[ -z $1 ]]; then
+    echo "configure: no job given."
+fi
+# TODO: get bootstrap working
