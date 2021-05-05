@@ -23,8 +23,19 @@ core.LoadPlugin = function (PluginSource)
     -- check if the plugin is a default plugin
     if string.match(PluginSource, "DEFAULT_CPP") then
         -- load plugin
-        require("starbuild_core_cpp")
         local plugin = require("starbuild_core_cpp")
+        local BaseName = plugin.BaseName
+        core_plugins[BaseName] = plugin
+        -- load plugin triggers into memory
+        if plugin.Triggers == nil then
+            print("FATAL ERROR! Failed to load the plugin "..plugin.Name.."!")
+            print("Every plugin is expected to have triggers! But this one does not. Please")
+            print("consult the plugin guide for more info.")
+            os.exit(1)
+        end
+        core_plugin_triggers[BaseName] = plugin.Triggers
+    elseif string.match(PluginSource, "DEFAULT_C") then
+        local plugin = require("starbuild_core_c")
         local BaseName = plugin.BaseName
         core_plugins[BaseName] = plugin
         -- load plugin triggers into memory
