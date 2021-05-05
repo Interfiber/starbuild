@@ -5,7 +5,7 @@ ver = io.popen('lua -v')
 version_info.LuaVersion = ver:read("a")
 local init = require("starbuild_init")
 local run = require("starbuild_run_cmd")
-
+local install = require("starbuild_install")
 cli.PrintHelp = function ()
     print("starbuild - Fast plugin based build system written in lua")
     print("Interfiber <interfiber@protonmail.com>")
@@ -28,5 +28,8 @@ cli.InitCommand = function ()
 end
 cli.RunCommand = function ()
     run.StartBuildRun()
+end
+cli.InstallCommand = function (Repo)
+    install.InstallFromGit(Repo)
 end
 return cli

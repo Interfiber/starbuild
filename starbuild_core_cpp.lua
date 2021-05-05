@@ -3,6 +3,7 @@ local plugin = {}
 plugin.Name = "C++ for starbuild"
 -- base name should be something without spaces or special characters.
 -- in this case just CPP
+-- this will also be referenced by the user in starbuild.lua
 plugin.BaseName = "CPP"
 plugin.Author = "Interfiber"
 plugin.License = "GNU public license"

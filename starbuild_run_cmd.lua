@@ -16,7 +16,7 @@ function run.StartBuildRun()
         print("Exit Code: 1")
         os.exit(1)
     end
-    local star_config = config.Config(core)
-    
+    -- run the config function
+    config.Config(core)
 end
 return run
