@@ -1,0 +1,9 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "Starbuild"
+theme = "techdoc"
+[params]
+    description = "A fast plugin based build system written in lua"
+    github_repository = "https://github.com/Interfiber/starbuild"
+    menu_style = "open-menu"
+[menu]
