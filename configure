@@ -12,7 +12,29 @@ function InstallRocks(){
         luarocks install ${LINE}
     done < ./rocks.txt
 }
+function MakeInstallFolder(){
+    mkdir -p "$HOME/.local/share/starbuild"
+    mkdir -p "$HOME/.local/share/starbuild/lib"
+    mkdir -p "$HOME/.local/share/starbuild/bin"
+}
+function CopyLua(){
+    cp *.lua $HOME/.local/share/starbuild/lib
+}
+function InstallFiles(){
+    cp starbuild.sh $HOME/.local/share/starbuild/bin
+}
 if [[ -z $1 ]]; then
     echo "configure: no job given."
 fi
 # TODO: get bootstrap working
+if [[ "$1" == "--bootstrap" ]]; then
+    echo "STAGE: InstallRocks"
+    InstallRocks
+    echo "STAGE: MakeInstallFolder"
+    MakeInstallFolder
+    echo "STAGE: CopyLua"
+    CopyLua
+    echo "STAGE: InstallFiles"
+    InstallFiles
+    echo "Done."
+fi
