@@ -18,7 +18,7 @@ plugin.Triggers.CBuild = function (args)
             files = files.." "..v
         else 
             -- file does not exist
-            print("FATAL ERROR(C++ plugin): Failed to find file "..v)
+            print("FATAL ERROR(C plugin): Failed to find file "..v)
             os.exit(1)
         end
     end
