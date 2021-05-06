@@ -21,7 +21,8 @@ function CopyLua(){
     cp *.lua $HOME/.local/share/starbuild/lib
 }
 function InstallFiles(){
-    cp starbuild.sh $HOME/.local/share/starbuild/bin
+    cp starbuild.sh $HOME/.local/share/starbuild/bin/starbuild
+    chmod +x $HOME/.local/share/starbuild/bin/starbuild
 }
 if [[ -z $1 ]]; then
     echo "configure: no job given."
