@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "https://interfiber.github.io/starbuild/"
 languageCode = "en-us"
 title = "Starbuild"
 theme = "techdoc"
