@@ -4,7 +4,7 @@
 # Under the GPL license.
 
 # Default config
-PREFIX="$HOME/.local/share"
+PREFIX="$HOME/.local/share/starbuild"
 
 function InstallRocks(){
     while IFS='' read -r LINE || [ -n "${LINE}" ]; do
