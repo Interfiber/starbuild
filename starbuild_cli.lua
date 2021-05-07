@@ -13,8 +13,6 @@ cli.PrintHelp = function ()
     print("Commands:")
     print("   init       Create new starbuild.lua")
     print("   run        Start the build proccess")
-    print("   install    Install plugin from a git URL")
-    print("   uninstall  Uninstall a plugin")
     print("Flags:")
     print("   --version-info    Print version info")
 end
