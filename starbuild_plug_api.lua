@@ -4,7 +4,7 @@
 -- plugin.api = {}
 -- local starbuild = plugin.api
 local api = {}
-local term = require "term"
+local color = require "color"
 -- task status will print a bar in the terminal
 -- saying if a task failed or not. Example below
 -- if the color is green it was ok, if its red
@@ -14,9 +14,9 @@ local term = require "term"
 -- error would appear here
 api.TaskStatus = function (failed, task)
     if failed then
-        print(term.colors.white.."[-] "..term.colors.red..task.." (failed)"..term.colors.white)
+        print(color.fg.white.."[-] "..color.fg.red..task.." (failed)"..color.fg.white)
     else
-        print(term.colors.white.."[+] "..term.colors.green..task.." (success)"..term.colors.white)
+        print(color.fg.white.."[+] "..color.fg.green..task.." (success)"..color.fg.white)
     end
 end
 api.GenObjectFileCpp = function (file, output)
