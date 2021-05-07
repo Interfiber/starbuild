@@ -1,8 +1,6 @@
 local run = {}
 
 function run.StartBuildRun()
-    print("starting build...")
-    print("loading config...")
     -- this will fail is the lua inside the starbuild file is written with error
     local config = require("starbuild")
     -- the core contains all of the functions

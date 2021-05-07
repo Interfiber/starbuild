@@ -4,7 +4,7 @@
 # Under the GPL license.
 
 # Default config
-PREFIX="$HOME/.local/starbuild"
+PREFIX="$HOME/.local/share"
 
 function InstallRocks(){
     while IFS='' read -r LINE || [ -n "${LINE}" ]; do
@@ -13,22 +13,38 @@ function InstallRocks(){
     done < ./rocks.txt
 }
 function MakeInstallFolder(){
-    mkdir -p "$HOME/.local/share/starbuild"
-    mkdir -p "$HOME/.local/share/starbuild/lib"
-    mkdir -p "$HOME/.local/share/starbuild/bin"
+    mkdir -p $PREFIX/
+    mkdir -p $PREFIX/lib
+    mkdir -p $PREFIX/bin
 }
 function CopyLua(){
-    cp *.lua $HOME/.local/share/starbuild/lib
+    cp *.lua $PREFIX/lib
+}
+function GetConfig(){
+    # check for items provided after the $1
+    # example:
+    # ./configure --bootstrap PREFIX
+    ConfigOne="$2"
+    ConfigTwo="$3"
+    ConfigFour="$4"
+    if [[ $ConfigOne == "PREFIX" ]]; then
+        echo "Config: Enter path to PREFIX:"
+        read p
+        echo "Config: Setting PREFIX=$p"
+        PREFIX=$p
+    fi
 }
 function InstallFiles(){
-    cp starbuild.sh $HOME/.local/share/starbuild/bin/starbuild
-    chmod +x $HOME/.local/share/starbuild/bin/starbuild
+    cp starbuild.sh $PREFIX/bin/starbuild
+    chmod +x $PREFIX/bin/starbuild
 }
 if [[ -z $1 ]]; then
     echo "configure: no job given."
 fi
 # TODO: get bootstrap working
 if [[ "$1" == "--bootstrap" ]]; then
+    GetConfig $@
+    echo "PREFIX=$PREFIX"
     echo "STAGE: InstallRocks"
     InstallRocks
     echo "STAGE: MakeInstallFolder"

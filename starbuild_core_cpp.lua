@@ -9,10 +9,10 @@ plugin.Author = "Interfiber"
 plugin.License = "GNU public license"
 plugin.Repo = "https://github.com/Interfiber/starbuild"
 plugin.Triggers = {}
+plugin.api = {}
 -- all functions you want to use must be included in the trigger.
 plugin.Triggers.CPPBuild = function (args)
     -- args should be a list of files to compile
-    print("waiting for compiler to finish...")
     -- make sure every file in the list exists
     local files = ""
     for i,v in pairs(args) do
@@ -31,7 +31,7 @@ plugin.Triggers.CPPBuild = function (args)
     end
     -- compile all of the files.
     os.execute("g++"..files)
-    print("compile finished. output file is a.out")
+    plugin.api.TaskStatus(false, "g++")
 end
 -- return the plugin
 return plugin

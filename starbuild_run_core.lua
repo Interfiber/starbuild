@@ -33,6 +33,12 @@ core.LoadPlugin = function (PluginSource)
             print("consult the plugin guide for more info.")
             os.exit(1)
         end
+        -- load api
+        if plugin.api ~= nil then
+            -- give api access
+            plugin.api = require("starbuild_plug_api")
+        end
+        -- register triggers
         core_plugin_triggers[BaseName] = plugin.Triggers
     elseif string.match(PluginSource, "DEFAULT_C") then
         local plugin = require("starbuild_core_c")
@@ -44,6 +50,11 @@ core.LoadPlugin = function (PluginSource)
             print("Every plugin is expected to have triggers! But this one does not. Please")
             print("consult the plugin guide for more info.")
             os.exit(1)
+        end
+        -- load api
+        if plugin.api ~= nil then
+            -- give api access
+            plugin.api = require("starbuild_plug_api")
         end
         core_plugin_triggers[BaseName] = plugin.Triggers
     else
@@ -57,6 +68,11 @@ core.LoadPlugin = function (PluginSource)
             print("Every plugin is expected to have triggers! But this one does not. Please")
             print("consult the plugin guide for more info.")
             os.exit(1)
+        end
+        -- load api
+        if plugin.api ~= nil then
+            -- give api access
+            plugin.api = require("starbuild_plug_api")
         end
         core_plugin_triggers[BaseName] = plugin.Triggers
     end
