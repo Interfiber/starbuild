@@ -14,9 +14,37 @@ local term = require "term"
 -- error would appear here
 api.TaskStatus = function (failed, task)
     if failed then
-        print("[-] "..term.colors.red..task.." (failed)")
+        print(term.colors.white.."[-] "..term.colors.red..task.." (failed)"..term.colors.white)
     else
-        print("[+] "..term.colors.green..task.." (success)")
+        print(term.colors.white.."[+] "..term.colors.green..task.." (success)"..term.colors.white)
     end
+end
+api.GenObjectFileCpp = function (file, output)
+    -- generate using g++
+    local stat = os.execute("g++ -c "..file.." -o "..output)
+    return stat
+end
+api.GenObjectFileC = function (file, output)
+    -- generate using g++
+    local stat = os.execute("gcc -c "..file.." -o "..output)
+    return stat
+end
+api.LinkObjectFilesC = function (files, output)
+    -- link using g++
+    local files_str = ""
+    for i,v in pairs(files) do
+        files_str = files_str..v.." "
+    end
+    local status = os.execute("gcc -o "..output.." "..files_str)
+    return status
+end
+api.LinkObjectFilesCpp = function (files, output)
+    -- link using g++
+    local files_str = ""
+    for i,v in pairs(files) do
+        files_str = files_str..v.." "
+    end
+    local status = os.execute("g++ -o "..output.." "..files_str)
+    return status
 end
 return api
