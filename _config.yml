@@ -21,8 +21,8 @@
 title: Starbuild docs
 description: >- # this means to ignore newlines until "baseurl:"
   Starbuild is a plugin based build system
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/starbuild" # the subpath of your site, e.g. /blog
+url: "https://interfiber.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 theme: just-the-docs
