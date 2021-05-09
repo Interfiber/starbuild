@@ -22,10 +22,10 @@ plugin.Triggers.CBuild = function (args)
             file = v:gsub(".c", ".o"):gsub(".h", ".o")
             table.insert(files, file)
             if not failed then
-                plugin.api.TaskStatus(true, "CXX "..v)
+                plugin.api.TaskStatus(true, "CC "..v)
                 os.exit(1)
             else
-                plugin.api.TaskStatus(false, "CXX "..v)
+                plugin.api.TaskStatus(false, "CC "..v)
             end
         else 
             -- file does not exist
