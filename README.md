@@ -5,4 +5,4 @@ Plugin based build system.
 Starbuild is a plugin based build system, for any language you want written in lua.
 
 ## Documentation
-Look [here](https://interfiber.github.io)
+Look [here](https://interfiber.github.io/starbuild)
