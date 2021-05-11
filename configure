@@ -38,13 +38,24 @@ function InstallFiles(){
     cp starbuild.sh $PREFIX/bin/starbuild
     chmod +x $PREFIX/bin/starbuild
 }
+function TestForDeps(){
+  if ! test -f "$(which lua)"; then
+    echo "Fail: Failed to detect lua on your system."
+    exit 1
+  fi
+  if ! test -f "$(which luarocks)"; then
+    echo "Fail: Failed to detect luarocks on your system"
+    exit 1
+  fi
+}
 if [[ -z $1 ]]; then
     echo "configure: no job given."
 fi
 # TODO: get bootstrap working
 if [[ "$1" == "--bootstrap" ]]; then
     GetConfig $@
-    echo "PREFIX=$PREFIX"
+    # Test for lua, and luarocks
+    TestForDeps
     echo "STAGE: InstallRocks"
     InstallRocks
     echo "STAGE: MakeInstallFolder"
